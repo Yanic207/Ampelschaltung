@@ -1,0 +1,10 @@
+# macOS
+.DS_Store
+
+# Virtuelle Umgebung
+.venv/
+
+# Python-Bytecode und Caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
