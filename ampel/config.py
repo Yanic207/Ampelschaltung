@@ -28,3 +28,8 @@ DURATION_CAR_RED_YELLOW = 2.0    # Phase 5: Auto Rot+Gelb
 
 # --- Taster -----------------------------------------------------------------
 BOUNCE_TIME = 0.3  # Entprellzeit des Tasters in Sekunden
+
+# --- Weboberfläche / Simulation ---------------------------------------------
+# Wartezeit in Phase 0, bevor in der Simulation (virtuell) der Taster gedrückt
+# wird. Gehört zur Zeitkonfiguration, damit auch die Simulation lesbar bleibt.
+SIMULATION_BUTTON_DELAY = 2.0

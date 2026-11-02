@@ -15,6 +15,13 @@ Eine einfache Fußgängerampel mit Raspberry Pi:
 Kontext: Berufsschulprojekt. Der Code soll einfach lesbar und nachvollziehbar
 sein — keine überengineeringte Lösung.
 
+## Weboberfläche (Simulation)
+
+Optional gibt es eine kleine Weboberfläche, die den aktuellen Ampelzustand
+live als Simulation anzeigt (`python -m ampel.web`). Sie läuft ohne Hardware
+und nutzt ausschließlich die Python-Standardbibliothek (`http.server`) — keine
+neue Abhängigkeit. Der bestehende Zustandsautomat wird unverändert verwendet.
+
 ## Wichtige Randbedingung: noch keine Hardware
 
 Ich besitze **noch keinen Raspberry Pi und keine Bauteile**. Deshalb gilt:
@@ -109,6 +116,7 @@ Standardwerte und dürfen für Tests/Demo angepasst werden.
 - **Sprache**: Python 3
 - **Bibliotheken**: `gpiozero` (LED, Button, MockFactory), `pytest` für Tests.
   Keine weiteren Abhängigkeiten ohne Rückfrage; `requirements.txt` pflegen.
+  Die Weboberfläche nutzt nur die Standardbibliothek (`http.server`).
 - **Struktur** (Vorschlag, darf sinnvoll angepasst werden):
 
   ```
@@ -117,9 +125,11 @@ Standardwerte und dürfen für Tests/Demo angepasst werden.
     config.py       # Pins, Zeiten, Mock-Schalter
     hardware.py     # Aufbau der LED-/Button-Objekte, Mock vs. echtes GPIO
     controller.py   # Zustandsautomat / Phasenlogik
+    web.py          # Weboberfläche mit Live-Simulation (nur Standardbibliothek)
     main.py         # Einstiegspunkt, --mock, sauberes Beenden
   tests/
     test_controller.py
+    test_web.py
   requirements.txt
   README.md
   ```
@@ -141,7 +151,7 @@ Standardwerte und dürfen für Tests/Demo angepasst werden.
 
 - Kein Blinken der Fußgängerampel, kein Signalton, keine Anzeige der
   Restzeit, keine Verkehrssensoren, keine zweite Fahrspur.
-- Keine Weboberfläche, keine Datenbank, kein Docker.
+- Keine Datenbank, kein Docker.
 - Keine Klassenhierarchie oder Abstraktionsebene, die über das oben
   beschriebene Maß hinausgeht.
 
@@ -156,6 +166,8 @@ Standardwerte und dürfen für Tests/Demo angepasst werden.
 - [ ] `pytest` läuft auf macOS ohne Hardware fehlerfrei durch.
 - [ ] `Ctrl+C` schaltet alle LEDs aus.
 - [ ] `README.md` beschreibt Start im Mock-Betrieb und (später) auf dem Pi.
+- [ ] `python -m ampel.web` zeigt den Ampelzustand live im Browser
+      (Simulation ohne Hardware, nur Standardbibliothek).
 
 ## Arbeitsweise für Claude Code
 

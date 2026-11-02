@@ -57,6 +57,16 @@ python -m ampel.main
 Die Pinbelegung (BCM-Nummerierung) und die Zeiten stehen zentral in
 `ampel/config.py`.
 
+## Weboberfläche (Simulation)
+
+```
+.venv/bin/python -m ampel.web
+```
+
+Danach im Browser öffnen: <http://localhost:8000>. Die Seite zeigt die beiden
+Ampeln live als kleine Simulation — ohne Hardware, nur mit der
+Python-Standardbibliothek (`http.server`). Optionen: `--host` und `--port`.
+
 ## Tests
 
 ```
